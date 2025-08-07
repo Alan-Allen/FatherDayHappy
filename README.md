@@ -22,4 +22,17 @@
 ```bash
 git clone https://github.com/你的GitHub帳號/父親節卡片.git
 cd 父親節卡片
+```
+3. 安裝相依套件：
+```base
+npm install
+```
 
+4. 啟動開發伺服器：
+```base
+npm run dev
+```
+5. 開啟瀏覽器並前往：
+```base
+http://localhost:
+```
