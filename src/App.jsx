@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 const COLORS = ["#ff3b3b", "#ffb93b", "#fff93b", "#3bff5f", "#3bbcff", "#d33bff"];
+const text_colors = ['text-primary', 'text-success', 'text-danger', 'text-warning', 'text-info'];
 
 function App() {
   const [clicked, setClicked] = useState(false);
   const [confetti, setConfetti] = useState([]);
+  const [textColor, setTextColor] = useState('text-success');
 
   const handleClick = () => {
     // 切換卡片文字狀態
@@ -25,6 +27,9 @@ function App() {
       };
     });
 
+    const newColor = text_colors[Math.floor(Math.random() * text_colors.length)];
+
+    setTextColor(newColor);
     setConfetti(newConfetti);
 
     setTimeout(() => setConfetti([]), 4500);
@@ -56,10 +61,19 @@ function App() {
 
       {/* 卡片 */}
       <div className="card shadow mx-auto mt-5"
-        style={{ width: '300px', textAlign: 'center', padding: '1.5rem', position: 'relative' }} >
-        <h5 className="card-title mb-3">父親節快樂卡片</h5>
-        <p className={`card-text ${clicked ? 'text-primary fw-bold' : ''}`}>
-          {clicked ? '謝謝爸爸，您是最棒的！' : '點擊按鈕送出祝福吧！'}
+        style={{ 
+          width: '400px',
+          textAlign: 'center',  
+          padding: '1.5rem', 
+          position: 'relative',
+          background: 'linear-gradient(135deg, #fceabb 0%, #f8b500 100%)',
+          borderRadius: '1em',
+          boxShadow: 'inset 0 0 10px rgba(255, 255, 255, 0.3), 0 4px 20px rgba(0, 0, 0, 0.2)',
+          color: '#333',
+          }} >
+        <h5 style={{ fontSize: '2em', marginBottom: '0.5em', fontFamily: '"ZCOOL KuaiLe", cursive', }}>🎉 父親節快樂 🎉</h5>
+        <p className={`card-text fw-bold ${textColor}`} style={{ fontSize: '2em', fontFamily: '"ZCOOL KuaiLe", cursive' }}>
+          煙花綻放!
         </p>
 
         {/* 按鈕容器（相對定位） */}
@@ -67,21 +81,22 @@ function App() {
           <button
             onClick={handleClick}
             style={{
-              position: 'relative',
-              zIndex: 2,
-              padding: '0.6em 1.2em',
-              fontSize: '1rem',
-              borderRadius: '8px',
-              border: 'none',
-              cursor: 'pointer',
+              fontSize: '1.2em',
               backgroundColor: '#007bff',
               color: '#fff',
-              userSelect: 'none',
-              overflow: 'hidden',
+              padding: '0.75em 1.5em',
+              border: 'none',
+              borderRadius: '0.5em',
+              cursor: 'pointer',
+              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+              transition: 'transform 0.2s ease',
             }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1.0)'}
           >
-            {clicked ? '收回祝福' : '送出祝福'}
+            啟動
           </button>
+
 
           {/* 彩帶 */}
           <div
