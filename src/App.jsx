@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>    
-      <div className={darkMode ? "bg-dark text-white min-vh-100" : "bg-light text-dark min-vh-100"}>
+      <div className={darkMode ? "bg-dark text-white d-flex flex-column min-vh-100" : "bg-light text-dark d-flex flex-column min-vh-100"}>
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">父親節卡片</a>
@@ -50,10 +50,7 @@ function App() {
           </div>
         </nav>
 
-        <div
-          className="d-flex justify-content-center align-items-center"
-          style={{ minHeight: '100vh' }}
-        >
+        <main className="flex-grow-1 d-flex justify-content-center align-items-center">
         {/* 卡片 */}
         <div className="card shadow mx-auto mt-5"
           style={{ 
@@ -123,7 +120,7 @@ function App() {
             </div>
           </div>
         </div>
-        </div>
+        </main>
         
         {/* CSS動畫樣式 */}
         <style>{`
@@ -150,12 +147,12 @@ function App() {
             }
           }
         `}</style>
+        <footer className="bg-dark text-light text-center py-3 mt-auto">
+          <div className="container">
+            <small>&copy; 2025 Alan-Allen. All rights reserved.</small>
+          </div>
+        </footer>
       </div>
-      <footer className="bg-dark text-light text-center py-3 mt-auto">
-        <div className="container">
-          <small>&copy; 2025 Alan-Allen. All rights reserved.</small>
-        </div>
-      </footer>
     </>
   );
 }
